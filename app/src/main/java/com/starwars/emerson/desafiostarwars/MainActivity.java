@@ -5,10 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.swapi.models.People;
+import com.swapi.sw.StarWars;
 import com.swapi.sw.StarWarsApi;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 import java.util.ArrayList;
 
@@ -17,20 +23,16 @@ public class MainActivity extends AppCompatActivity {
     private ListView personagens;
     private ArrayList<String> persona;
     private ArrayAdapter<String> personaAdapter;
-    private int contador = 0;
+    private int contador = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         StarWarsApi.init();
-        persona = new ArrayList<>();
 
-        persona.add("PEDRO1");
-        persona.add("PEDRO5");
-        persona.add("PEDRO4");
-        persona.add("PEDRO3");
-        persona.add("PEDRO2");
+
+        persona = new ArrayList<>();
 
         personaAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, persona);
 
@@ -44,14 +46,30 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "ADICIONAR QR CODE", Toast.LENGTH_LONG).show();
 
                 try{
-                    String torneio = ("Torneio ");
-                    persona.add(torneio);
-                    personaAdapter.notifyDataSetChanged();
+                    StarWarsApi.getApi().getPeople(contador++, new Callback<People>() {
+                        @Override
+                        public void success(People people, Response response) {
+                            persona.add(people.name);
+                            personaAdapter.notifyDataSetChanged();
+                        }
+                        @Override
+                        public void failure(RetrofitError error) {
+                            Log.e("CALLBACK-PERSON", error.getMessage());
+                        }
+                    });
                 }
                 catch (Exception e){
                     Log.e ("erro",  "deu ruim");
                 }
             }
         });
+
+        personagens.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "SELECIONEI", Toast.LENGTH_SHORT);
+            }
+        });
+
     }
 }
