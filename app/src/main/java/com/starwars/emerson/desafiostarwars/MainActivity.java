@@ -6,21 +6,18 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
+import com.swapi.sw.StarWarsApi;
 
-import java.lang.reflect.Array;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListView personagens;
     private ArrayList<String> persona;
     private ArrayAdapter<String> personaAdapter;
+    private int contador = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
