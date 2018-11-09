@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Star Wars</string>
+    <string name="DetailsActivityTitle">personagem</string>
+    <string name="personName">Nome</string>
+    <string name="personBirthYear">Nascimento</string>
+    <string name="personGender">Genero</string>
+    <string name="personHairColor">Cabelo</string>
+    <string name="personHeight">Altura</string>
+    <string name="personMass">Massa</string>
+    <string name="personSkingColor">Pele</string>
+    <string name="personFilme">Filme</string>
+    <string name="txtNo5me">Nome</string>
+    <string name="txtNom6e">Nome</string>
 </resources>

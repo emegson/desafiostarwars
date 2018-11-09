@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
-    <color name="colorBotaoAdicionar">#FFF</color>
+    <color name="colorPrimary">#21499f</color>
+    <color name="colorPrimaryDark">#121c32</color>
+    <color name="colorAccent">#f1f639</color>
+    <color name="colorBotaoAdicionar">#D9DC8D</color>
+    <color name="colorBackground">#415c79</color>
+    <color name="colorButtonNormal">#af2221</color>
+    <color name="primary_text_material_dark">#45494A</color>
+    <color name="text_color_secondary">#B72022</color>
+    <color name="secondary_text_material_dark">#a2a553</color>
+    <color name="text_color_primary">#d4c277</color>
 </resources>
