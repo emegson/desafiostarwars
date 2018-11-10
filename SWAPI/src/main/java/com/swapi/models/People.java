@@ -1,11 +1,13 @@
 package com.swapi.models;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Oleur on 21/12/2014.
@@ -44,14 +46,17 @@ public class People implements Serializable {
     public String url;
 
     @SerializedName("films")
-    public ArrayList<String> filmsUrls;
+    public List<String> filmsUrls;
 
+    @Ignore
     @SerializedName("species")
     public ArrayList<String> speciesUrls;
 
+    @Ignore
     @SerializedName("starships")
     public ArrayList<String> starshipsUrls;
 
+    @Ignore
     @SerializedName("vehicles")
     public ArrayList<String> vehiclesUrls;
 

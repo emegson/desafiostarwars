@@ -35,8 +35,6 @@ public class DetailsActivity extends AppCompatActivity {
         intent = getIntent();
         personagem = (People) intent.getSerializableExtra("personagem");
         montaTextview(personagem);
-        Toast.makeText(DetailsActivity.this, personagem.name, Toast.LENGTH_SHORT).show();
-        Toast.makeText(DetailsActivity.this, "do planeta "+ personagem.homeWorldId, Toast.LENGTH_SHORT).show();
     }
 
     private void montaTextview(People personagem) {
