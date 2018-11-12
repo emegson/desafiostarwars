@@ -33,7 +33,8 @@
                 android:parentActivityName=".MainActivity"
                 android:screenOrientation="fullSensor"
                 tools:replace="screenOrientation"/>
-        <activity android:name=".FilmeActivity">
+        <activity
+                android:name=".FilmeActivity">
         </activity>
     </application>
 

@@ -1,22 +1,13 @@
 package com.starwars.emerson.desafiostarwars;
 
-import android.app.Person;
 import android.content.Intent;
-import android.provider.CalendarContract;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.swapi.models.People;
-import com.swapi.models.Planet;
-import com.swapi.sw.StarWars;
-import com.swapi.sw.StarWarsApi;
-import retrofit.Callback;
-import retrofit.RetrofitError;
-import retrofit.client.Response;
 
 public class DetailsActivity extends AppCompatActivity {
     private Intent intent;
@@ -32,18 +23,25 @@ public class DetailsActivity extends AppCompatActivity {
     private TextView textfilme;
     private TextInputLayout personTitle;
     private TextInputEditText personFilme;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
         intent = getIntent();
-        personFilme = findViewById(R.id.personFilme);
         personagem = (People) intent.getSerializableExtra("personagem");
         montaTextview(personagem);
+        configuraClickFilme(personagem);
+    }
+
+    private void configuraClickFilme(final People people) {
+        personFilme = findViewById(R.id.personFilme);
         personFilme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DetailsActivity.this, "Olá",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(DetailsActivity.this, FilmeActivity.class);
+                intent.putExtra("people", people);
+                startActivity(intent);
             }
         });
     }
@@ -67,7 +65,7 @@ public class DetailsActivity extends AppCompatActivity {
 //        texthomeWorld.setText(planeta[0]);
         textmass.setText(personagem.mass);
         textskingColor.setText(personagem.skinColor);
-        textfilme.setText(personagem.filmsTitle.toString().substring(1,personagem.filmsTitle.toString().length()-3));
+        textfilme.setText(personagem.filmsTitleString());
 //                formataStringFilme(.substring(1)));
 
 

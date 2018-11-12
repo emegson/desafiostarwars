@@ -99,4 +99,9 @@ public class People implements Serializable {
         else
             return "-1";
     }
+
+
+    public String filmsTitleString() {
+        return this.filmsTitle.toString().substring(1,this.filmsTitle.toString().length()-3);
+    }
 }
