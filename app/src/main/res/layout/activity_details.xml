@@ -1,121 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.LinearLayoutCompat
+<ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:context=".DetailsActivity"
-        android:orientation="vertical">
-    <android.support.design.widget.TextInputLayout
+        android:layout_height="match_parent">
+
+    <android.support.v7.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="8dp">
+            android:layout_margin="16dp"
+            tools:layout_editor_absoluteX="0dp"
+            tools:context=".DetailsActivity"
+            android:orientation="vertical">
 
-        <android.support.design.widget.TextInputEditText
+        <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/personName"
-                android:id="@+id/personName"
-                android:enabled="false"/>
-    </android.support.design.widget.TextInputLayout>
+                tools:layout_editor_absoluteY="298dp"
+                tools:layout_editor_absoluteX="8dp">
 
-    <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="8dp">
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personName"
+                    android:id="@+id/personName"
+                    android:enabled="false"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
+        <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/personBirthYear"
-                android:id="@+id/personBirthYear"
-                android:enabled="false"/>
-    </android.support.design.widget.TextInputLayout>
+                tools:layout_editor_absoluteY="298dp"
+                tools:layout_editor_absoluteX="8dp">
 
-    <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="8dp">
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personBirthYear"
+                    android:id="@+id/personBirthYear"
+                    android:enabled="false"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
+        <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/personGender"
-                android:id="@+id/personGender"
-                android:enabled="false"/>
-    </android.support.design.widget.TextInputLayout>
+                tools:layout_editor_absoluteY="298dp"
+                tools:layout_editor_absoluteX="8dp">
 
-    <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="8dp">
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personGender"
+                    android:id="@+id/personGender"
+                    android:enabled="false"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
+        <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/personHairColor"
-                android:id="@+id/personHairColor"
-                android:enabled="false"/>
-    </android.support.design.widget.TextInputLayout>
+                tools:layout_editor_absoluteY="298dp"
+                tools:layout_editor_absoluteX="8dp">
 
-    <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="8dp">
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personHairColor"
+                    android:id="@+id/personHairColor"
+                    android:enabled="false"/>
+        </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputEditText
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" tools:layout_editor_absoluteY="298dp"
+                tools:layout_editor_absoluteX="8dp">
+
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personHeight"
+                    android:id="@+id/personHeight"
+                    android:enabled="false"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" tools:layout_editor_absoluteY="298dp"
+                tools:layout_editor_absoluteX="8dp">
+
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personMass"
+                    android:id="@+id/personMass"
+                    android:enabled="false"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" tools:layout_editor_absoluteY="298dp"
+                tools:layout_editor_absoluteX="8dp"
+                android:id="@+id/inputLayout">
+
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personSkingColor"
+                    android:id="@+id/personSkingColor"
+                    android:enabled="false"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/personHeight"
-                android:id="@+id/personHeight"
-                android:enabled="false"/>
-    </android.support.design.widget.TextInputLayout>
+                android:id="@+id/personTitle"
+                tools:layout_editor_absoluteY="298dp"
+                tools:layout_editor_absoluteX="8dp">
 
-    <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="8dp">
+            <android.support.design.widget.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/personFilme"
+                    android:id="@+id/personFilme"
+                    android:focusable="false"
+                    android:enabled="true" android:layout_marginBottom="32dp"/>
 
-        <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/personMass"
-                android:id="@+id/personMass"
-                android:enabled="false"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="8dp"
-            android:id="@+id/inputLayout">
-
-        <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/personSkingColor"
-                android:id="@+id/personSkingColor"
-                android:enabled="false"/>
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="298dp"
-            tools:layout_editor_absoluteX="8dp">
-
-        <android.support.design.widget.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/personFilme"
-                android:id="@+id/personFilme"
-                android:enabled="false"/>
-    </android.support.design.widget.TextInputLayout>
+        </android.support.design.widget.TextInputLayout>
 
 
-</android.support.v7.widget.LinearLayoutCompat>
+    </android.support.v7.widget.LinearLayoutCompat>
+</ScrollView>

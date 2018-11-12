@@ -1,6 +1,5 @@
 package com.starwars.emerson.desafiostarwars;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,13 +13,16 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.swapi.dao.PeopleDAO;
+import com.swapi.database.Converters;
 import com.swapi.database.GeradorBancoDados;
+import com.swapi.models.Film;
 import com.swapi.models.People;
 import com.swapi.sw.StarWarsApi;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,20 +57,21 @@ public class MainActivity extends AppCompatActivity {
 
         if (result.getContents() == null) {
             Log.d("MainActivity", "Cancelled scan");
-            Toast.makeText(this, "Cancelado", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "cancelado", Toast.LENGTH_LONG).show();
         } else {
             Log.d("MainActivity", "Scanned");
-            Toast.makeText(this, "Escaneado: " + result.getContents(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "escaneado: " + result.getContents(), Toast.LENGTH_SHORT).show();
             try {
-                final int a = Integer.parseInt(result.getContents());
-                if (a > 88 | a < 1) {
-                    Toast.makeText(this, "não existe esse registro", Toast.LENGTH_LONG).show();
+                final int peopleId = Integer.parseInt(result.getContents());
+                if (peopleId > 88 | peopleId < 1) {
+                    Toast.makeText(this, "esse registro não existe...", Toast.LENGTH_LONG).show();
                     return;
                 }
-                StarWarsApi.getApi().getPeople(a, new Callback<People>() {
+                StarWarsApi.getApi().getPeople(peopleId, new Callback<People>() {
                     @Override
                     public void success(People people, Response response) {
-                        people.setId(a);
+                        people.setId(peopleId);
+                        people = formataPeopleFilmTitle(people);
                         insereNaLista(people);
                     }
 
@@ -82,6 +85,33 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    private People formataPeopleFilmTitle(People people) {
+        List<String> filmes = people.filmsUrls;
+        people.filmsTitle = trataUrl(filmes);
+        return people;
+    }
+
+    private List<String> trataUrl(List<String> filmes) {
+        final List<String> filmeTitle = new ArrayList<>();
+        String aux;
+        int i;
+        for(i=0; i < filmes.size(); i++){
+            aux = People.retornaId(filmes.get(i));
+            StarWarsApi.getApi().getFilm(Integer.parseInt(aux), new Callback<Film>() {
+                @Override
+                public void success(Film film, Response response) {
+                    filmeTitle.add(film.title);
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    Log.e("film Erro", "falha ao retornar o filme" + error.getMessage(), error);
+                }
+            });
+        }
+        return filmeTitle;
     }
 
     private void insereNaLista(People people) {
@@ -100,10 +130,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         GeradorBancoDados gerador = new GeradorBancoDados();
         PeopleDAO peopleDAO = gerador.gera(MainActivity.this).getPeopleDAO();
-        Toast.makeText(MainActivity.this,"ONRESUME",Toast.LENGTH_SHORT);
         super.onPause();
-        for(int i=0; i < peopleList.size(); i++)
+        List<String> listateste;
+        Converters conversor = new Converters();
+        Toast.makeText(MainActivity.this, "ONRESUME", Toast.LENGTH_SHORT);
+        for (int i = 0; i < peopleList.size(); i++) {
             peopleDAO.inserePeople(peopleList.get(i));
+            listateste = conversor.toList(conversor.fromList(peopleList.get(i).filmsUrls));
+            Log.i("print", listateste.toString());
+        }
     }
 
     private void configList() {

@@ -3,7 +3,9 @@ package com.swapi.models;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverters;
 import com.google.gson.annotations.SerializedName;
+import com.swapi.database.Converters;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -48,6 +50,9 @@ public class People implements Serializable {
     @SerializedName("films")
     public List<String> filmsUrls;
 
+
+    public List<String> filmsTitle;
+
     @Ignore
     @SerializedName("species")
     public ArrayList<String> speciesUrls;
@@ -65,26 +70,6 @@ public class People implements Serializable {
         return this.name.toLowerCase();
     }
 
-    private void setHomeWorldName() {
-        int fim, inicio = homeWorldUrl.length();
-        fim = homeWorldUrl.length() - 1;
-
-        if (homeWorldUrl.length() == 32)
-            inicio = inicio - 3;
-        else
-            inicio = inicio - 2;
-
-        if (inicio != homeWorldUrl.length())
-            this.homeWorldId = Integer.parseInt(homeWorldUrl.substring(inicio, fim));
-        else
-            this.homeWorldId = -1;
-    }
-
-    public int getHomeWorldId() {
-        setHomeWorldName();
-        return this.homeWorldId;
-    }
-
     public void setId(int a) {
         this.id = a;
     }
@@ -98,5 +83,20 @@ public class People implements Serializable {
         if (obj instanceof People)
             return this.getId() == ((People) obj).getId();
         return false;
+    }
+
+    public static String retornaId(String url) {
+        int fim, inicio = url.length();
+        fim = url.length() - 1;
+
+        if (url.length() == 32)
+            inicio = inicio - 3;
+        else
+            inicio = inicio - 2;
+
+        if (inicio != url.length())
+            return url.substring(inicio, fim);
+        else
+            return "-1";
     }
 }
